@@ -80,7 +80,10 @@ namespace MirageIslandPlugin
 
         private void ViewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SelectedPKM = box[PKMList.SelectedIndex];
+            if (party.Count != 0 && PKMList.SelectedIndex < party.Count)
+                SelectedPKM = party[PKMList.SelectedIndex];
+            else
+                SelectedPKM = box[PKMList.SelectedIndex - party.Count];
         }
 
         private void ContextMenu_Open(object sender, System.ComponentModel.CancelEventArgs e)
