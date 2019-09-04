@@ -41,7 +41,8 @@ namespace MirageIslandPlugin
 
         private void OpenFeebasLocatorForm(object sender, EventArgs e)
         {
-            if (SaveFileEditor.SAV.RS || SaveFileEditor.SAV.E)
+            if (SaveFileEditor.SAV.Version == GameVersion.S || SaveFileEditor.SAV.Version == GameVersion.R || 
+			SaveFileEditor.SAV.Version == GameVersion.RS || SaveFileEditor.SAV.Version == GameVersion.E || SaveFileEditor.SAV.Version == GameVersion.RSE)
             {
                 mif = new MirageIslandForm((SAV3)SaveFileEditor.SAV);
                 mif.ShowDialog();

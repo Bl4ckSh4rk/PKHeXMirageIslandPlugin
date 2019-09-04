@@ -19,11 +19,17 @@ namespace MirageIslandPlugin
         public MirageIslandForm(SAV3 sav)
         {
             InitializeComponent();
-
-            if (sav.RS)
-                offset = sav.GetBlockOffset(2) + 0x408;
-            if (sav.E)
-                offset = sav.GetBlockOffset(2) + 0x464;
+            switch (sav.Version)
+            {
+                case GameVersion.S:
+                case GameVersion.R:
+                case GameVersion.RS:
+                    offset = sav.GetBlockOffset(2) + 0x408;
+                    break;
+                case GameVersion.E:
+                    offset = sav.GetBlockOffset(2) + 0x464;
+                    break;
+			}
             
             this.sav = sav;
 

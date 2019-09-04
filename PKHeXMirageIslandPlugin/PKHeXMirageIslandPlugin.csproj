@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A2DB1F31-4192-4965-B720-D36BF522DCA3}</ProjectGuid>
+    <ProjectGuid>{34E0E7AC-0246-4643-B59A-481F05676444}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MirageIslandPlugin</RootNamespace>
