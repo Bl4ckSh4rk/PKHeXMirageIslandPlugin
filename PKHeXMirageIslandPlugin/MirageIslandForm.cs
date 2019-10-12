@@ -47,12 +47,12 @@ namespace MirageIslandPlugin
 
             foreach (PKM pkm in party)
             {
-                names[i] = (PKX.GetSpeciesName(pkm.Species, 2) + (pkm.IsNicknamed ? " (" + pkm.Nickname + ")" : "") + " [Party]");
+                names[i] = (SpeciesName.GetSpeciesName(pkm.Species, 2) + (pkm.IsNicknamed ? " (" + pkm.Nickname + ")" : "") + " [Party]");
                 i++;
             }
             foreach (PKM pkm in box)
             {
-                names[i] = (PKX.GetSpeciesName(pkm.Species, 2) + (pkm.IsNicknamed ? " (" + pkm.Nickname + ")" : "") + " [Box: " + pkm.Box + ", Slot: " + pkm.Slot + "]");
+                names[i] = (SpeciesName.GetSpeciesName(pkm.Species, 2) + (pkm.IsNicknamed ? " (" + pkm.Nickname + ")" : "") + " [Box: " + pkm.Box + ", Slot: " + pkm.Slot + "]");
                 i++;
             }
 
