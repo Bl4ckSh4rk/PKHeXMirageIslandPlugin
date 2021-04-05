@@ -8,16 +8,18 @@ namespace MirageIslandPlugin
     {
         public string Name => "Mirage Island Tool";
         public int Priority => 1; // Loading order, lowest is first.
-        public ISaveFileProvider SaveFileEditor { get; private set; }
-        public IPKMView PKMEditor { get; private set; }
+        public ISaveFileProvider SaveFileEditor { get; private set; } = null!;
+        public IPKMView PKMEditor { get; private set; } = null!;
+
+        private ToolStripMenuItem? ctrl;
 
         public void Initialize(params object[] args)
         {
             Console.WriteLine($"Loading {Name}...");
             if (args == null)
                 return;
-            SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider);
-            PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView);
+            SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider)!;
+            PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView)!;
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
             LoadMenuStrip(menu);
         }
@@ -25,37 +27,33 @@ namespace MirageIslandPlugin
         private void LoadMenuStrip(ToolStrip menuStrip)
         {
             var items = menuStrip.Items;
-            var tools = items.Find("Menu_Tools", false)[0] as ToolStripDropDownItem;
+            var tools = (ToolStripDropDownItem)items.Find("Menu_Tools", false)[0];
             AddPluginControl(tools);
         }
 
         private void AddPluginControl(ToolStripDropDownItem tools)
         {
-            var ctrl = new ToolStripMenuItem(Name);
+            ctrl = new ToolStripMenuItem(Name);
             tools.DropDownItems.Add(ctrl);
             ctrl.Image = Properties.Resources.icon;
             ctrl.Click += new EventHandler(OpenFeebasLocatorForm);
+            ctrl.Enabled = false;
         }
 
-        private MirageIslandForm mif;
+        private MirageIslandForm? mif;
 
         private void OpenFeebasLocatorForm(object sender, EventArgs e)
         {
-            if (SaveFileEditor.SAV.Version == GameVersion.S || SaveFileEditor.SAV.Version == GameVersion.R || 
-			SaveFileEditor.SAV.Version == GameVersion.RS || SaveFileEditor.SAV.Version == GameVersion.E || SaveFileEditor.SAV.Version == GameVersion.RSE)
-            {
-                mif = new MirageIslandForm((SAV3)SaveFileEditor.SAV);
-                mif.ShowDialog();
-                if (mif.SelectedPKM != null)
-                    PKMEditor.PopulateFields(mif.SelectedPKM);
-            }
-            else
-                MessageBox.Show("Mirage Island Tool is only available for Ruby, Sapphire and Emerald.", "Error");
+            mif = new MirageIslandForm((SAV3)SaveFileEditor.SAV);
+            mif.ShowDialog();
+            if (mif.SelectedPKM != null)
+                PKMEditor.PopulateFields(mif.SelectedPKM);
         }
 
         public void NotifySaveLoaded()
         {
-            Console.WriteLine($"{Name} was notified that a Save File was just loaded.");
+            if (ctrl != null)
+                ctrl.Enabled = SaveFileEditor.SAV.Version is GameVersion.R or GameVersion.S or GameVersion.E or GameVersion.RS or GameVersion.RSE;
         }
         public bool TryLoadFile(string filePath)
         {

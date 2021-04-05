@@ -7,14 +7,14 @@ namespace MirageIslandPlugin
 {
     public partial class MirageIslandForm : Form
     {
-        private SAV3 sav;
-        private List<PKM> party;
-        private List<PKM> box;
-        private string[] names;
-        private int offset;
+        private readonly SAV3 sav;
+        private List<PKM> party = new();
+        private List<PKM> box = new();
+        private string[] names = new string[0];
+        private readonly int offset;
         private int seed;
 
-        public PKM SelectedPKM;
+        public PKM? SelectedPKM = null;
 
         public MirageIslandForm(SAV3 sav)
         {
@@ -24,16 +24,16 @@ namespace MirageIslandPlugin
                 case GameVersion.S:
                 case GameVersion.R:
                 case GameVersion.RS:
-                    offset = sav.GetBlockOffset(2) + 0x408;
+                    offset = 0x1388;
                     break;
                 case GameVersion.E:
-                    offset = sav.GetBlockOffset(2) + 0x464;
+                    offset = 0x13E4;
                     break;
 			}
             
             this.sav = sav;
 
-            seed = BitConverter.ToUInt16(sav.Data, offset);
+            seed = BitConverter.ToUInt16(sav.Large, offset);
 
             MirageIslandSeedBox.Text = seed.ToString("X4");
         }
@@ -80,7 +80,7 @@ namespace MirageIslandPlugin
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            sav.SetData(BitConverter.GetBytes(Util.GetHexValue(MirageIslandSeedBox.Text)), offset);
+            BitConverter.GetBytes((short)Util.GetHexValue(MirageIslandSeedBox.Text)).CopyTo(sav.Large, offset);
             Close();
         }
 
