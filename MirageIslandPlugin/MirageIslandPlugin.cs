@@ -53,7 +53,7 @@ namespace MirageIslandPlugin
         public void NotifySaveLoaded()
         {
             if (ctrl != null)
-                ctrl.Enabled = SaveFileEditor.SAV.Version is GameVersion.R or GameVersion.S or GameVersion.E or GameVersion.RS or GameVersion.RSE;
+                ctrl.Enabled = SaveFileEditor.SAV is SAV3RS or SAV3E;
         }
         public bool TryLoadFile(string filePath)
         {
