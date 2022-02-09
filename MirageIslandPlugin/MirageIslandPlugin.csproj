@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>Feebas Locator PKHeX Plugin</Description>
+    <Description>Mirage Island PKHeX Plugin</Description>
     <FileVersion>1.0.6.0</FileVersion>
     <TargetFramework>net462</TargetFramework>
     <OutputType>Library</OutputType>
