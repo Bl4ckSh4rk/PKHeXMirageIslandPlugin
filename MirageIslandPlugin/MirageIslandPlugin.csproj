@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Feebas Locator PKHeX Plugin</Description>
-    <FileVersion>1.0.5.0</FileVersion>
+    <FileVersion>1.0.6.0</FileVersion>
     <TargetFramework>net462</TargetFramework>
     <OutputType>Library</OutputType>
     <LangVersion>10</LangVersion>
@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Resources\icon.png" />
   </ItemGroup>
 </Project>

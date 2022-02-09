@@ -9,7 +9,7 @@ namespace MirageIslandPlugin
     {
         private readonly SAV3 sav;
         private readonly List<SlotCache> cache;
-        private int seed;
+        private ushort seed;
 
         public PKM? SelectedPKM = null;
 
@@ -24,18 +24,20 @@ namespace MirageIslandPlugin
             cache = new List<SlotCache>(sav.BoxSlotCount + (sav.HasParty ? 6 : 0));
             SlotInfoLoader.AddFromSaveFile(sav, cache);
 
-            MirageIslandSeedBox.Text = seed.ToString("X4");
+            MirageIslandSeedBox.Value = seed;
         }
 
-        private void SetPKMList()
+        private void UpdatePKMList()
         {
             PKMList.Items.Clear();
 
             foreach(SlotCache entry in cache)
             {
                 var entity = entry.Entity;
-                if ((entity.PID & 0xFFFF) == seed)
+                if (entity.Species != 0 && (entity.PID & 0xFFFF) == seed)
+                {
                     _ = PKMList.Items.Add($"{SpeciesName.GetSpeciesName(entity.Species, 2)}{(entity.IsNicknamed ? " (" + entity.Nickname + ")" : "")} {GetSlotInfo(entry)}");
+                }
             }
         }
 
@@ -44,22 +46,22 @@ namespace MirageIslandPlugin
             return entry.Source switch
             {
                 SlotInfoBox box => $"[Box {box.Box + 1}, Slot {box.Slot + 1}]",
-                SlotInfoParty party => $"[Party, Slot: {party.Slot}]",
+                SlotInfoParty party => $"[Party, Slot {party.Slot}]",
                 _ => ""
             };
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            sav.SetEventConst(0x24, (ushort)Util.GetHexValue(MirageIslandSeedBox.Text));
+            sav.SetEventConst(0x24, (ushort)MirageIslandSeedBox.Value);
             Close();
         }
 
-        private void MirageIslandSeedBox_TextChanged(object sender, EventArgs e)
+        private void MirageIslandSeedBox_ValueChanged(object sender, EventArgs e)
         {
-            seed = (int)Util.GetHexValue(MirageIslandSeedBox.Text);
+            seed = (ushort)MirageIslandSeedBox.Value;
 
-            SetPKMList();
+            UpdatePKMList();
         }
     }
 }

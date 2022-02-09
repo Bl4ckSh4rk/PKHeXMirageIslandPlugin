@@ -19,7 +19,6 @@ namespace MirageIslandPlugin
             if (args == null)
                 return;
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider)!;
-            PKMEditor = (IPKMView)Array.Find(args, z => z is IPKMView)!;
             var menu = (ToolStrip)Array.Find(args, z => z is ToolStrip);
             LoadMenuStrip(menu);
         }
@@ -40,14 +39,10 @@ namespace MirageIslandPlugin
             ctrl.Enabled = false;
         }
 
-        private MirageIslandForm? mif;
-
         private void OpenFeebasLocatorForm(object sender, EventArgs e)
         {
-            mif = new MirageIslandForm((SAV3)SaveFileEditor.SAV);
+            using MirageIslandForm mif = new((SAV3)SaveFileEditor.SAV);
             mif.ShowDialog();
-            if (mif.SelectedPKM != null)
-                PKMEditor.PopulateFields(mif.SelectedPKM);
         }
 
         public void NotifySaveLoaded()
