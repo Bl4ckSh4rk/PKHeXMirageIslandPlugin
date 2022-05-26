@@ -19,7 +19,7 @@ namespace MirageIslandPlugin
             
             this.sav = sav;
 
-            seed = sav.GetEventConst(0x24);
+            seed = sav.GetWork(0x24);
 
             cache = new List<SlotCache>(sav.BoxSlotCount + (sav.HasParty ? 6 : 0));
             SlotInfoLoader.AddFromSaveFile(sav, cache);
@@ -53,7 +53,7 @@ namespace MirageIslandPlugin
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
-            sav.SetEventConst(0x24, (ushort)MirageIslandSeedBox.Value);
+            sav.SetWork(0x24, (ushort)MirageIslandSeedBox.Value);
             Close();
         }
 
