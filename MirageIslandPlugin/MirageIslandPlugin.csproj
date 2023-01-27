@@ -2,17 +2,17 @@
 
   <PropertyGroup>
     <Description>Mirage Island PKHeX Plugin</Description>
-    <FileVersion>1.0.7.0</FileVersion>
-    <TargetFramework>net462</TargetFramework>
+    <FileVersion>1.2.0.0</FileVersion>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
     <OutputType>Library</OutputType>
-    <LangVersion>10</LangVersion>
+    <LangVersion>11</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <PackageReference Include="PKHeX.Core" Version="22.11.26" />
+    <PackageReference Include="PKHeX.Core" Version="23.1.26" />
+    <PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>

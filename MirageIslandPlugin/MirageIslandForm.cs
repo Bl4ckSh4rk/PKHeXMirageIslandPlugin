@@ -41,7 +41,7 @@ namespace MirageIslandPlugin
             }
         }
 
-        private string GetSlotInfo(SlotCache entry)
+        private static string GetSlotInfo(SlotCache entry)
         {
             return entry.Source switch
             {

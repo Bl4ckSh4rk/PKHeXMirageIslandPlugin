@@ -16,26 +16,26 @@ namespace MirageIslandPlugin
         {
             Console.WriteLine($"Loading {Name}...");
             SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider)!;
-            LoadMenuStrip((ToolStrip)Array.Find(args, z => z is ToolStrip));
+            LoadMenuStrip((ToolStrip?)Array.Find(args, z => z is ToolStrip));
         }
 
-        private void LoadMenuStrip(ToolStrip menuStrip)
+        private void LoadMenuStrip(ToolStrip? menuStrip)
         {
-            AddPluginControl((ToolStripDropDownItem)menuStrip.Items.Find("Menu_Tools", false)[0]);
+            AddPluginControl((ToolStripDropDownItem?)menuStrip?.Items.Find("Menu_Tools", false)[0]);
         }
 
-        private void AddPluginControl(ToolStripDropDownItem tools)
+        private void AddPluginControl(ToolStripDropDownItem? tools)
         {
             ctrl = new(Name)
             {
                 Visible = false,
                 Image = Properties.Resources.icon
             };
-            ctrl.Click += new(OpenFeebasLocatorForm);
-            _ = tools.DropDownItems.Add(ctrl);
+            ctrl.Click += new(OpenMirageIslandForm);
+            _ = tools?.DropDownItems.Add(ctrl);
         }
 
-        private void OpenFeebasLocatorForm(object sender, EventArgs e)
+        private void OpenMirageIslandForm(object? sender, EventArgs? e)
         {
             _ = new MirageIslandForm((SAV3)SaveFileEditor.SAV).ShowDialog();
         }
