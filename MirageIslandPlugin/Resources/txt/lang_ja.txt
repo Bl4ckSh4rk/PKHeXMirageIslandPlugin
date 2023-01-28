@@ -1,0 +1,9 @@
+PluginName = Mirage Island Tool
+MirageIsland = Mirage Island (Route 130)
+WillLetYouSeeMirageIsland = Pokémon that will let you see Mirage Island
+Seed = Seed:
+SeedExplanation = Seed has to match the last 4 characters of your Pokémon's PID.
+Save = Save
+Box = Box
+Party = Party
+Slot = Slot

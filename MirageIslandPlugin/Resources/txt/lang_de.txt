@@ -1,0 +1,9 @@
+PluginName = Wundereiland Tool
+MirageIsland = Wundereiland (Route 130)
+WillLetYouSeeMirageIsland = Pokémon die dich Wundereiland sehen lassen
+Seed = Seed:
+SeedExplanation = Seed muss den letzten 4 Zeichen der PID eines Pokémon entsprechen.
+Save = Speichern
+Box = Box
+Party = Team
+Slot = Slot

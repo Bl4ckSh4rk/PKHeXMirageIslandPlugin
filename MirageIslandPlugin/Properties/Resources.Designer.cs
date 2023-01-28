@@ -19,7 +19,7 @@ namespace MirageIslandPlugin.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -67,6 +67,142 @@ namespace MirageIslandPlugin.Properties {
             get {
                 object obj = ResourceManager.GetObject("icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PluginName = Wundereiland Tool
+        ///MirageIsland = Wundereiland (Route 130)
+        ///WillLetYouSeeMirageIsland = Pokémon die dich Wundereiland sehen lassen
+        ///Seed = Seed:
+        ///SeedExplanation = Seed muss den letzten 4 Zeichen der PID eines Pokémon entsprechen.
+        ///Save = Speichern
+        ///Box = Box
+        ///Party = Team
+        ///Slot = Slot.
+        /// </summary>
+        public static string lang_de {
+            get {
+                return ResourceManager.GetString("lang_de", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PluginName = Mirage Island Tool
+        ///MirageIsland = Mirage Island (Route 130)
+        ///WillLetYouSeeMirageIsland = Pokémon that will let you see Mirage Island
+        ///Seed = Seed:
+        ///SeedExplanation = Seed has to match the last 4 characters of your Pokémon&apos;s PID.
+        ///Save = Save
+        ///Box = Box
+        ///Party = Party
+        ///Slot = Slot.
+        /// </summary>
+        public static string lang_es {
+            get {
+                return ResourceManager.GetString("lang_es", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PluginName = Mirage Island Tool
+        ///MirageIsland = Mirage Island (Route 130)
+        ///WillLetYouSeeMirageIsland = Pokémon that will let you see Mirage Island
+        ///Seed = Seed:
+        ///SeedExplanation = Seed has to match the last 4 characters of your Pokémon&apos;s PID.
+        ///Save = Save
+        ///Box = Box
+        ///Party = Party
+        ///Slot = Slot.
+        /// </summary>
+        public static string lang_fr {
+            get {
+                return ResourceManager.GetString("lang_fr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PluginName = Mirage Island Tool
+        ///MirageIsland = Mirage Island (Route 130)
+        ///WillLetYouSeeMirageIsland = Pokémon that will let you see Mirage Island
+        ///Seed = Seed:
+        ///SeedExplanation = Seed has to match the last 4 characters of your Pokémon&apos;s PID.
+        ///Save = Save
+        ///Box = Box
+        ///Party = Party
+        ///Slot = Slot.
+        /// </summary>
+        public static string lang_it {
+            get {
+                return ResourceManager.GetString("lang_it", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PluginName = Mirage Island Tool
+        ///MirageIsland = Mirage Island (Route 130)
+        ///WillLetYouSeeMirageIsland = Pokémon that will let you see Mirage Island
+        ///Seed = Seed:
+        ///SeedExplanation = Seed has to match the last 4 characters of your Pokémon&apos;s PID.
+        ///Save = Save
+        ///Box = Box
+        ///Party = Party
+        ///Slot = Slot.
+        /// </summary>
+        public static string lang_ja {
+            get {
+                return ResourceManager.GetString("lang_ja", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PluginName = Mirage Island Tool
+        ///MirageIsland = Mirage Island (Route 130)
+        ///WillLetYouSeeMirageIsland = Pokémon that will let you see Mirage Island
+        ///Seed = Seed:
+        ///SeedExplanation = Seed has to match the last 4 characters of your Pokémon&apos;s PID.
+        ///Save = Save
+        ///Box = Box
+        ///Party = Party
+        ///Slot = Slot.
+        /// </summary>
+        public static string lang_ko {
+            get {
+                return ResourceManager.GetString("lang_ko", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PluginName = Mirage Island Tool
+        ///MirageIsland = Mirage Island (Route 130)
+        ///WillLetYouSeeMirageIsland = Pokémon that will let you see Mirage Island
+        ///Seed = Seed:
+        ///SeedExplanation = Seed has to match the last 4 characters of your Pokémon&apos;s PID.
+        ///Save = Save
+        ///Box = Box
+        ///Party = Party
+        ///Slot = Slot.
+        /// </summary>
+        public static string lang_zh {
+            get {
+                return ResourceManager.GetString("lang_zh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PluginName = Mirage Island Tool
+        ///MirageIsland = Mirage Island (Route 130)
+        ///WillLetYouSeeMirageIsland = Pokémon that will let you see Mirage Island
+        ///Seed = Seed:
+        ///SeedExplanation = Seed has to match the last 4 characters of your Pokémon&apos;s PID.
+        ///Save = Save
+        ///Box = Box
+        ///Party = Party
+        ///Slot = Slot.
+        /// </summary>
+        public static string lang_zh2 {
+            get {
+                return ResourceManager.GetString("lang_zh2", resourceCulture);
             }
         }
     }
