@@ -1,9 +1,9 @@
-PluginName = Mirage Island Tool
-MirageIsland = Mirage Island (Route 130)
-WillLetYouSeeMirageIsland = Pokémon that will let you see Mirage Island
+PluginName = 幻影島工具
+MirageIsland = 幻影島 (130號水路)
+WillLetYouSeeMirageIsland = 可以讓你看到幻影島的寶可夢
 Seed = Seed:
-SeedExplanation = Seed has to match the last 4 characters of your Pokémon's PID.
-Save = Save
-Box = Box
-Party = Party
-Slot = Slot
+SeedExplanation = Seed必須匹配您所擁有的寶可夢 PID 的最後4個字符
+Save = 保存
+Box = 盒子
+Party = 同行
+Slot = 野生
