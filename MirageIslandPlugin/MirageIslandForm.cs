@@ -25,6 +25,7 @@ public partial class MirageIslandForm : Form
         SlotInfoLoader.AddFromSaveFile(sav, cache);
 
         MirageIslandSeedBox.Value = seed;
+        UpdatePKMList();
     }
 
     private void UpdatePKMList()
@@ -36,7 +37,7 @@ public partial class MirageIslandForm : Form
             var entity = entry.Entity;
             if (entity.Species != 0 && (entity.PID & 0xFFFF) == seed)
             {
-                _ = PKMList.Items.Add($"{SpeciesName.GetSpeciesName(entity.Species, 2)}{(entity.IsNicknamed ? " (" + entity.Nickname + ")" : "")} {GetSlotInfo(entry)}");
+                _ = PKMList.Items.Add($"{GameInfo.Strings.Species[entity.Species]}{(entity.IsNicknamed ? " (" + entity.Nickname + ")" : "")} {GetSlotInfo(entry)}");
             }
         }
     }

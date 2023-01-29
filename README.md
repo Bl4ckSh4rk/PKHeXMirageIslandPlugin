@@ -12,3 +12,5 @@ Ruby, Sapphire and Emerald are supported.
 
 ## Credits
 Kaphotics for [PKHeX](https://github.com/kwsch/PKHeX).
+
+ppllouf for Chinese translation!
