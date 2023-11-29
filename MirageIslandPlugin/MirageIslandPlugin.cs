@@ -16,7 +16,7 @@ public class MirageIsland : IPlugin
     {
         LocalizationUtil.SetLocalization(GameInfo.CurrentLanguage);
 
-        Console.WriteLine($"Loading {Name}...");
+        Console.WriteLine($"Loading {nameof(MirageIslandPlugin)}...");
         SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider)!;
         LoadMenuStrip((ToolStrip?)Array.Find(args, z => z is ToolStrip));
     }
@@ -45,7 +45,7 @@ public class MirageIsland : IPlugin
     public void NotifySaveLoaded()
     {
         if (ctrl != null)
-            ctrl.Visible = SaveFileEditor.SAV is SAV3RS or SAV3E;
+            ctrl.Visible = SaveFileEditor.SAV is IGen3Hoenn;
     }
 
     public bool TryLoadFile(string filePath) => false;

@@ -10,6 +10,7 @@ public partial class MirageIslandForm : Form
     private readonly SAV3 sav;
     private readonly List<SlotCache> cache;
     private ushort seed;
+    private const byte MIRAGE_ISLAND_WORK = 0x24;
 
     public PKM? SelectedPKM = null;
 
@@ -19,7 +20,7 @@ public partial class MirageIslandForm : Form
         
         this.sav = sav;
 
-        seed = sav.GetWork(0x24);
+        seed = sav.GetWork(MIRAGE_ISLAND_WORK);
 
         cache = new List<SlotCache>(sav.BoxSlotCount + (sav.HasParty ? 6 : 0));
         SlotInfoLoader.AddFromSaveFile(sav, cache);
@@ -54,7 +55,7 @@ public partial class MirageIslandForm : Form
 
     private void SaveButton_Click(object sender, EventArgs e)
     {
-        sav.SetWork(0x24, (ushort)MirageIslandSeedBox.Value);
+        sav.SetWork(MIRAGE_ISLAND_WORK, (ushort)MirageIslandSeedBox.Value);
         Close();
     }
 
