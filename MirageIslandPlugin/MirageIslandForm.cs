@@ -17,7 +17,7 @@ public partial class MirageIslandForm : Form
     public MirageIslandForm(SAV3 sav)
     {
         InitializeComponent();
-        
+
         this.sav = sav;
 
         seed = sav.GetWork(MIRAGE_ISLAND_WORK);
@@ -33,7 +33,7 @@ public partial class MirageIslandForm : Form
     {
         PKMList.Items.Clear();
 
-        foreach(SlotCache entry in cache)
+        foreach (SlotCache entry in cache)
         {
             var entity = entry.Entity;
             if (entity.Species != 0 && (entity.PID & 0xFFFF) == seed)

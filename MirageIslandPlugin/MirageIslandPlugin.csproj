@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Mirage Island PKHeX Plugin</Description>
-    <FileVersion>1.4.0.0</FileVersion>
+    <Version>1.4.1.0</Version>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <OutputType>Library</OutputType>
@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="PKHeX.Core" Version="23.10.12" />
+    <PackageReference Include="PKHeX.Core" Version="24.6.3" />
     <PackageReference Include="System.Resources.Extensions" Version="7.0.0" />
   </ItemGroup>
 

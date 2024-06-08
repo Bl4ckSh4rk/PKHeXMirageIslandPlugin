@@ -6,17 +6,17 @@ namespace MirageIslandPlugin;
 
 public class MirageIsland : IPlugin
 {
-    public string Name => TranslationStrings.PluginName;
+    public string Name => nameof(MirageIsland);
     public int Priority => 1; // Loading order, lowest is first.
     public ISaveFileProvider SaveFileEditor { get; private set; } = null!;
 
-    private ToolStripMenuItem? ctrl;
+    private ToolStripMenuItem ctrl = new();
 
     public void Initialize(params object[] args)
     {
         LocalizationUtil.SetLocalization(GameInfo.CurrentLanguage);
 
-        Console.WriteLine($"Loading {nameof(MirageIslandPlugin)}...");
+        Console.WriteLine($"Loading {Name}...");
         SaveFileEditor = (ISaveFileProvider)Array.Find(args, z => z is ISaveFileProvider)!;
         LoadMenuStrip((ToolStrip?)Array.Find(args, z => z is ToolStrip));
     }
@@ -28,13 +28,15 @@ public class MirageIsland : IPlugin
 
     private void AddPluginControl(ToolStripDropDownItem? tools)
     {
-        ctrl = new(Name)
+        ctrl = new()
         {
             Visible = false,
             Image = Properties.Resources.icon
         };
         ctrl.Click += new(OpenMirageIslandForm);
         _ = tools?.DropDownItems.Add(ctrl);
+
+        NotifyDisplayLanguageChanged(GameInfo.CurrentLanguage);
     }
 
     private void OpenMirageIslandForm(object? sender, EventArgs? e)
@@ -46,6 +48,13 @@ public class MirageIsland : IPlugin
     {
         if (ctrl != null)
             ctrl.Visible = SaveFileEditor.SAV is IGen3Hoenn;
+    }
+
+    public void NotifyDisplayLanguageChanged(string language)
+    {
+        LocalizationUtil.SetLocalization(language);
+
+        ctrl.Text = TranslationStrings.PluginName;
     }
 
     public bool TryLoadFile(string filePath) => false;
