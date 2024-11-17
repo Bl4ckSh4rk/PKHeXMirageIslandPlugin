@@ -22,7 +22,7 @@ public partial class MirageIslandForm : Form
 
         seed = sav.GetWork(MIRAGE_ISLAND_WORK);
 
-        cache = new List<SlotCache>(sav.BoxSlotCount + (sav.HasParty ? 6 : 0));
+        cache = new(sav.BoxSlotCount + (sav.HasParty ? 6 : 0));
         SlotInfoLoader.AddFromSaveFile(sav, cache);
 
         MirageIslandSeedBox.Value = seed;
@@ -38,7 +38,7 @@ public partial class MirageIslandForm : Form
             var entity = entry.Entity;
             if (entity.Species != 0 && (entity.PID & 0xFFFF) == seed)
             {
-                _ = PKMList.Items.Add($"{GameInfo.Strings.Species[entity.Species]}{(entity.IsNicknamed ? " (" + entity.Nickname + ")" : "")} {GetSlotInfo(entry)}");
+                _ = PKMList.Items.Add($"{GameInfo.Strings.Species[entity.Species]}{(entity.IsNicknamed ? " (" + entity.Nickname + ")" : string.Empty)} {GetSlotInfo(entry)}");
             }
         }
     }
@@ -49,13 +49,14 @@ public partial class MirageIslandForm : Form
         {
             SlotInfoBox box => $"[{TranslationStrings.Box} {box.Box + 1}, {TranslationStrings.Slot} {box.Slot + 1}]",
             SlotInfoParty party => $"[{TranslationStrings.Party}, {TranslationStrings.Slot} {party.Slot}]",
-            _ => ""
+            _ => string.Empty
         };
     }
 
     private void SaveButton_Click(object sender, EventArgs e)
     {
         sav.SetWork(MIRAGE_ISLAND_WORK, (ushort)MirageIslandSeedBox.Value);
+        sav.State.Edited = true;
         Close();
     }
 
